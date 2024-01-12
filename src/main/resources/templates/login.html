@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example </title>
+    <link href="./skin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./skin/css/basic.css" rel="stylesheet">
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="./skin/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+<!-- Login Form -->
+<form>
+</form>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="./skin/img/user-default.png" id="icon" alt="User Icon"/>
+        </div>
+        <!-- Login Form -->
+
+        <div th:if="${param.error}">
+            <small class="form-text text-danger">Некорректное имя пользователя или пароль</small>
+        </div>
+        <div th:if="${param.logout}">
+            Вы вышли из системы.
+        </div>
+        <form th:action="@{/login}" method="post">
+            <input type="text" id="login" class="fadeIn second" name="username" placeholder="Введите имя пользователя">
+            <input type="text" id="password" class="fadeIn third" name="password" placeholder="Введите пароль">
+            <input type="submit" class="fadeIn fourth" value="Логин">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Забыли пароль?</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

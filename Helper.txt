@@ -1,0 +1,22 @@
+при смене папки нужно поменять!
+1.
+template_spring_war --> portal-coin
+template-app --> portal-coin
+
+2.
+удалить папку 
+target
+.idea
+
+3. в pom.xml поменять
+с:  <artifactId>template-app</artifactId>
+на: <artifactId>template-app</artifactId>
+
+с:  <name>template-app</name>
+на: <name>portal-coin</name>
+
+<description>..</description>
+
+<!-- Tomcat7 deploy -->
+<path>/template-app</path>
+<path>/portal-coin</path>
