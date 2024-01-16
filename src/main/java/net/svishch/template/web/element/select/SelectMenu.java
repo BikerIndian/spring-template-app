@@ -1,4 +1,4 @@
-package net.svishch.template.config.web.element.select;
+package net.svishch.template.web.element.select;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

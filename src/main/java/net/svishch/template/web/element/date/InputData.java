@@ -1,4 +1,4 @@
-package net.svishch.template.config.web.element.date;
+package net.svishch.template.web.element.date;
 
 public class InputData {
     public String dataVal="true";

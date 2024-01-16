@@ -1,4 +1,4 @@
-package net.svishch.template.config.web.element.button;
+package net.svishch.template.web.element.button;
 
 public class Button {
     public String name = "";

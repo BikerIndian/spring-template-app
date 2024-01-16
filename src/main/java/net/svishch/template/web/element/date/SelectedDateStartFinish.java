@@ -1,4 +1,4 @@
-package net.svishch.template.config.web.element.date;
+package net.svishch.template.web.element.date;
 
 public class SelectedDateStartFinish {
    public InputData dateStart = new InputData("dateStart");

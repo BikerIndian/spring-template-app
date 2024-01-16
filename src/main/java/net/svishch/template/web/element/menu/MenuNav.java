@@ -1,4 +1,4 @@
-package net.svishch.template.config.web.element.menu;
+package net.svishch.template.web.element.menu;
 
 import java.util.ArrayList;
 import java.util.List;

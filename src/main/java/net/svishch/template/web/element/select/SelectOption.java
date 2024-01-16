@@ -1,4 +1,4 @@
-package net.svishch.template.config.web.element.select;
+package net.svishch.template.web.element.select;
 
 public class SelectOption {
     public String value = "";

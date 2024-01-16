@@ -1,4 +1,4 @@
-package net.svishch.template.config.web.element.input;
+package net.svishch.template.web.element.input;
 
 public class Input {
     public String inputClass="";

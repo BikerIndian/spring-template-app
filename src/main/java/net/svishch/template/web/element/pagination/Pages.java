@@ -1,4 +1,4 @@
-package net.svishch.template.config.web.element.pagination;
+package net.svishch.template.web.element.pagination;
 
 // Переход по страницам
 public class Pages {
