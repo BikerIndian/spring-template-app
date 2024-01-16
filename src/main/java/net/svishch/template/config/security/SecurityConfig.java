@@ -1,4 +1,4 @@
-package net.svishch.template.config;
+package net.svishch.template.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
