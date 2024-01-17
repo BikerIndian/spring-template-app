@@ -1,0 +1,24 @@
+<div xmlns:th="https://www.thymeleaf.org"  th:remove="tag">
+    <div class="main-menu-content">
+        <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
+            <div th:each="item : ${navItem.listItem}" th:remove="tag">
+                <li th:class="${item.classItem}">
+                    <a href="javascript://" th:onclick="getHtmlContent([[${item.idLoadPage}]],[[${item.page}]])">
+                        <i th:class="${item.icon}"></i>
+                        <span data-i18n="nav.form_layouts.form_layout_basic" class="menu-title">[[${item.name}]]</span>
+                    </a>
+                    <ul class="menu-content" th:if="${item.isNoEnd()}" >
+                        <div th:each="item2 : ${item.listItem}" th:remove="tag">
+                            <li th:class="${item2.classItem}">
+                                <a href="javascript://" th:onclick="getHtmlContent([[${item2.idLoadPage}]],[[${item2.page}]])">
+                                    <i th:class="${item2.icon}"></i>
+                                    <span data-i18n="nav.form_layouts.form_layout_basic" class="menu-title"> [[${item2.name}]]</span>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>

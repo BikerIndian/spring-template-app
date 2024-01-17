@@ -31,4 +31,9 @@ public class Mapping {
     public String get(Model model) {
         return new Login(appVersion).getModel(model);
     }
+
+    @GetMapping(UrlAndModelPath.URL_BLANK)
+    public String getBlank() {
+        return UrlAndModelPath.MODEL_BLANK;
+    }
 }
