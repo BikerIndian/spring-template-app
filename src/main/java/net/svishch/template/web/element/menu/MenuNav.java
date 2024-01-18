@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MenuNav {
 
-    private int id;
+
     private String page = "";
     private String idLoadPage ="";
     private String icon = "";
@@ -22,9 +22,8 @@ public class MenuNav {
     this.bimbo = bimbo;
     }
 
-    public MenuNav(int id, List<String> userRoles) {
+    public MenuNav(List<String> userRoles) {
         this.userRoles = userRoles;
-        this.id = id;
         this.listItem = new ArrayList<>();
         this.accessUsers = new ArrayList<>();
 
@@ -100,11 +99,6 @@ public class MenuNav {
         this.idLoadPage = idLoadPage;
         return this;
     }
-
-    public int getId() {
-        return id;
-    }
-
 
     public MenuNav accessAdd(String role) {
         accessUsers.add(role);

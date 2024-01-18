@@ -3,7 +3,7 @@ importJsNoCache("./skin/js/pages/page_index.js");
 
 function reloadAtEndOfPageLoad(linkHtml) {
 
-    new PageIndex().update(linkHtml);
+   // new PageIndex().update(linkHtml);
 
 }
 
