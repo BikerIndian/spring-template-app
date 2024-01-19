@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+
+    <springProperty scope="context" name="APP_NAME" source="app.project.pom.name"/>
+
+    <property name="FILE_NAME_AUTH" value="../logs/${APP_NAME}/auth.log"/>
+    <property name="FILE_NAME_PAGES" value="../logs/${APP_NAME}/pages.log"/>
+    <property name="FILE_NAME_ERRORS" value="../logs/${APP_NAME}/errors.log"/>
+    <property name="FILE_NAME_CONSOLE" value="../logs/${APP_NAME}/console.log"/>
+    <property name="FILE_NAME_CONSOLE_APP" value="../logs/${APP_NAME}/console_app.log"/>
+
+    <appender name="AUTH" class="ch.qos.logback.core.FileAppender">
+        <file>${FILE_NAME_AUTH}</file>
+
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+              <!--  %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n -->
+                %d{dd.MM.yyyy HH:mm:ss} %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="PAGES_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${FILE_NAME_PAGES}</file>
+
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{dd.MM.yyyy HH:mm:ss} %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="ERRORS_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${FILE_NAME_ERRORS}</file>
+
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                <!--  %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n -->
+                %d{dd.MM.yyyy HH:mm:ss} %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <!--    CONSOLE    -->
+    <appender name="CONSOLE_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${FILE_NAME_CONSOLE}</file>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %n Date       : %d{dd.MM.yyyy HH:mm:ss}  %n Thread     : %thread %n Log        : %level %logger{36} %n ----------------------------------------------------------------------------%n%msg%n
+
+<!--                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n-->
+            </Pattern>
+        </layout>
+    </appender>
+    <!-- Вывод на консоль ConsoleAppender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!--  <file>test.log</file> -->
+        <!--  <File>${logback.logdir}/console.${logback.appname}.log</File> -->
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %n Date       : %d{dd.MM.yyyy HH:mm:ss}  %n Thread     : %thread %n Log        : %level %logger{36} %n ----------------------------------------------------------------------------%n%msg%n
+                <!--               %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n-->
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="CONSOLE_APP_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${FILE_NAME_CONSOLE_APP}</file>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %n Date       : %d{dd.MM.yyyy HH:mm:ss}  %n Thread     : %thread %n Log        : %level %logger{36} %n ----------------------------------------------------------------------------%n%msg%n
+           </Pattern>
+        </layout>
+    </appender>
+    <!-- Вывод на консоль ConsoleAppender -->
+    <appender name="CONSOLE_APP" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %n Date       : %d{dd.MM.yyyy HH:mm:ss}  %n Thread     : %thread %n Log        : %level %logger{36} %n ----------------------------------------------------------------------------%n%msg%n
+        </Pattern>
+        </layout>
+    </appender>
+
+    <logger name="auth-log" level="INFO" additivity="false">
+        <appender-ref ref="AUTH"/>
+    </logger>
+
+    <logger name="answer-log" level="INFO" additivity="false">
+        <appender-ref ref="ANSWER_FILE"/>
+    </logger>
+
+    <logger name="pages-log" level="INFO" additivity="false">
+        <appender-ref ref="PAGES_FILE"/>
+    </logger>
+
+    <logger name="errors-log" level="INFO" additivity="false">
+        <appender-ref ref="ERRORS_FILE"/>
+    </logger>
+
+    <logger name="console-app-log" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE_APP"/>
+        <appender-ref ref="CONSOLE_APP_FILE"/>
+    </logger>
+
+<!-- Укажите самый базовый уровень вывода журнала-->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="CONSOLE_FILE"/>
+    </root>
+
+
+
+</configuration>
