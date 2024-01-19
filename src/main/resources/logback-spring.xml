@@ -100,10 +100,6 @@
         <appender-ref ref="AUTH"/>
     </logger>
 
-    <logger name="answer-log" level="INFO" additivity="false">
-        <appender-ref ref="ANSWER_FILE"/>
-    </logger>
-
     <logger name="pages-log" level="INFO" additivity="false">
         <appender-ref ref="PAGES_FILE"/>
     </logger>
