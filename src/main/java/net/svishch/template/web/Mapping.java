@@ -2,6 +2,7 @@ package net.svishch.template.web;
 
 import net.svishch.template.config.locale.TranslatorMessages;
 import net.svishch.template.config.web.UrlAndModelPath;
+import net.svishch.template.services.report.ReportingCenterService;
 import net.svishch.template.web.pages.Login;
 import net.svishch.template.web.pages.PageIndex;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class Mapping {
 
     @Autowired
     TranslatorMessages translatorMessages;
+
+    @Autowired
+    private ReportingCenterService reporting;
+
+    @Autowired
+    private HttpServletRequest request;
 
     @Value("${app.project.version}")
     private String appVersion;
@@ -33,7 +42,12 @@ public class Mapping {
     }
 
     @GetMapping(UrlAndModelPath.URL_BLANK)
-    public String getBlank() {
+    public String getBlank( @AuthenticationPrincipal User user) {
+        pagesLog(user);
         return UrlAndModelPath.MODEL_BLANK;
+    }
+
+    private void pagesLog(User user) {
+        reporting.sendLogPages(user,request);
     }
 }
