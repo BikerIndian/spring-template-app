@@ -1,0 +1,17 @@
+.thead-inverse td {
+  text-align: center;}
+.table-hover td {
+  text-align: center;}
+
+  /* Стилизация сообщений об ошибках */
+  input:invalid {
+    box-shadow: 0 0 10px 1px red;
+  }
+
+
+.mark-as-an-error{
+    box-shadow: 0 0 10px 1px red;
+}
+
+
+
