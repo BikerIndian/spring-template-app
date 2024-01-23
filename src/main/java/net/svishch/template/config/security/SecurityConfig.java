@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -22,6 +23,8 @@ public class SecurityConfig   {
                 .authorizeRequests()
                 //.antMatchers("/", "/home").permitAll()
                 .antMatchers("/skin/**").permitAll()
+                .antMatchers("/login*").permitAll()
+                .antMatchers("/logout*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin() //стандартная форма
@@ -29,10 +32,12 @@ public class SecurityConfig   {
                 .permitAll()
                 .and()
                 .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
                 .permitAll();
         return http.build();
     }
 
+    /*
     @Bean
     UserDetailsService userDetailsService() {
         InMemoryUserDetailsManager userDetailsService = new InMemoryUserDetailsManager();
@@ -45,10 +50,9 @@ public class SecurityConfig   {
         return userDetailsService;
     }
 
+     */
+
     // PasswordEncoder
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+
 
 }

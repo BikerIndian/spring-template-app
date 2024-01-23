@@ -3,6 +3,7 @@ package net.svishch.template.services.report;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class ReportingCenterService {
     Logger logErrors = LoggerFactory.getLogger(ERRORS_LOG);
 
     /** ERRORS **/
-    private void sendLogError(Object object, Exception e) {
+    public void sendLogError(Object object, Exception e) {
         logErrors.error(new LogInformer().getErrorMessage(object, e));
     }
 
@@ -45,5 +46,9 @@ public class ReportingCenterService {
 
     private void println(String msg) {
         System.out.println(msg);
+    }
+
+    public void sendLogAuth(String user, String ip, AuthenticationException ex) {
+        System.out.println(String.format("User: %s Ip: %s, Error: %s ",user,ip,ex.getMessage()));
     }
 }
