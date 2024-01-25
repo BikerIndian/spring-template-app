@@ -8,6 +8,9 @@ public class UrlAndModelPath {
     public final static String URL_BLANK = "/pages/blank";
     public final static String MODEL_BLANK = "/pages/blank";
 
+    public final static String URL_ELEMENTS_FORM = "/pages/elements";
+    public final static String MODEL_ELEMENTS_FORM = "/pages/elements";
+
     public final static String URL_HOME = URL_BLANK;
 
 }

@@ -20,7 +20,12 @@ public class MenuRoot extends MenuNav {
         MenuNav doc = menu.getDoc()                         // Документы
                 .addItem(menu.getDocList());                // Список документов
 
+        MenuNav elements = menu.getElements()               // Элементы
+                        .addItem(menu.getElementsInputs()); // Элементы формы
+
         addItem(doc);                                       // Документы
+        addItem(elements);
+
     }
 
 }

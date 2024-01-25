@@ -5,13 +5,8 @@ import net.svishch.template.config.locale.TranslatorMessages;
 import net.svishch.template.config.security.RoleListApp;
 import net.svishch.template.config.web.UrlAndModelPath;
 import net.svishch.template.web.element.menu.MenuNav;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 
 
 public class MenuNavFactory {
@@ -22,6 +17,9 @@ public class MenuNavFactory {
     private MenuNav root;
     private MenuNav doc;                    // Документы
     private MenuNav docList;                // Список документов
+
+    private MenuNav elements;               // Элементы
+    private MenuNav elementsInputs;         // Элементы формы
 
     private List<String> userRoles;
 
@@ -50,7 +48,19 @@ public class MenuNavFactory {
                 .accessAdd(RoleListApp.ROLE_USER)
                 .accessAdd(RoleListApp.ROLE_ADMIN);
 
+        elements = new MenuNav(userRoles)
+                .setIcon("icon-document-text")
+                .setName(translator.getText("menu.elements.name"))
+                .accessAdd(RoleListApp.ROLE_USER)
+                .accessAdd(RoleListApp.ROLE_ADMIN);
 
+        elementsInputs = new MenuNav(userRoles)
+                .setName(translator.getText("menu.elementsInputs.name"))
+                .setIcon("icon-android-home")
+                .setPage(UrlAndModelPath.URL_ELEMENTS_FORM)
+                .setIdLoadPage(ID_LOAD_PAGE)
+                .accessAdd(RoleListApp.ROLE_USER)
+                .accessAdd(RoleListApp.ROLE_ADMIN);
     }
 
     public MenuNav getRoot() {
@@ -65,4 +75,11 @@ public class MenuNavFactory {
         return docList;
     }
 
+    public MenuNav getElements() {
+        return elements;
+    }
+
+    public MenuNav getElementsInputs() {
+        return elementsInputs;
+    }
 }

@@ -5,6 +5,7 @@ import net.svishch.template.config.web.UrlAndModelPath;
 import net.svishch.template.services.report.ReportingCenterService;
 import net.svishch.template.web.pages.Login;
 import net.svishch.template.web.pages.PageIndex;
+import net.svishch.template.web.pages.elemens.PageElements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -45,6 +46,12 @@ public class Mapping {
     public String getBlank( @AuthenticationPrincipal User user) {
         pagesLog(user);
         return UrlAndModelPath.MODEL_BLANK;
+    }
+
+    @GetMapping(UrlAndModelPath.URL_ELEMENTS_FORM)
+    public String getElements(Model model, @AuthenticationPrincipal User user) {
+        pagesLog(user);
+        return new PageElements(translatorMessages).getModel(model,  user );
     }
 
     private void pagesLog(User user) {
