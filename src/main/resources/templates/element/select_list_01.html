@@ -1,0 +1,8 @@
+<html xmlns:th="https://www.thymeleaf.org" th:remove="tag">
+<select class="form-control" th:name="@{${select.getName()}}">
+    <div th:each="option : ${select.getSelectList()}" th:remove="tag">
+        <option th:value="@{${option.value}}" th:if="${option.isSelected()}" selected>[[${option.text}]]</option>
+        <option th:value="@{${option.value}}" th:unless="${option.isSelected()}">[[${option.text}]]</option>
+    </div>
+</select>
+</html>

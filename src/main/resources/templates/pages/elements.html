@@ -7,6 +7,19 @@
         </div>
     </form>
 
+    <form id="selected">
+
+        <div class="col-lg-2" th:with="select=${dataPages.filter.selectType}">
+            <div th:replace="~{/element/select_list_01}" th:remove="tag"></div>
+        </div>
+
+        <div class="col-lg-1">
+            <button type="button" class="btn btn-primary"
+                    th:onclick='new Page().sendFormGetPage("/pages/elements","selected","row-Page")'>
+                <i class="icon-check2"></i> Send
+            </button>
+        </div>
+    </form>
     <div role="alert" id="alert_id"></div>
 
     <br>
