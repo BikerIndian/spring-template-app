@@ -1,7 +1,6 @@
 package net.svishch.template.config.security.component;
 
-
-import net.svishch.template.config.security.RoleListApp;
+import lombok.RequiredArgsConstructor;
 import net.svishch.template.services.report.ReportingCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -12,32 +11,18 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-
 @Component
+@RequiredArgsConstructor
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-   // @Autowired
-   // AuthenticationManager authenticationManager;
-/*
-    @Autowired
-    private LdapTemplate ldapTemplate;
-
-    @Autowired
-    private BmjErpService apiLk;
- */
-
-    @Autowired
-    private ReportingCenterService report;
-
-
-    @Autowired
-    AuthenticationDB authDB;
+    private final ReportingCenterService report;
+    private final AuthenticationDB dbUserService;
 
     @Override
     public Authentication authenticate(Authentication authentication)
             throws AuthenticationException {
 
-        UserDetails user = getApiUser(authentication);
+        UserDetails user = getUser(authentication, dbUserService);
 
         if (user == null) {
             String mes = String.format("User %s not found: ", authentication.getName());
@@ -53,16 +38,16 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
 
-    private UserDetails getApiUser(Authentication authentication) {
+    private UserDetails getUser(Authentication authentication, AuthenticationDB dataBase) {
         UserDetails user = null;
 
         String login = authentication.getName();
         String password = authentication.getCredentials().toString();
 
         try {
-            user = authDB.getUser(login,password);
-        }catch (Exception e){
-            report.sendLogError(this,e);
+            user = dataBase.getUser(login, password);
+        } catch (Exception e) {
+            report.sendLogError(this, e);
         }
 
         return user;

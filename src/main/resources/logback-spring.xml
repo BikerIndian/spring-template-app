@@ -60,9 +60,7 @@
 
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                %n Date       : %d{dd.MM.yyyy HH:mm:ss}  %n Thread     : %thread %n Log        : %level %logger{36} %n ----------------------------------------------------------------------------%n%msg%n
-
-<!--                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n-->
+                %n %d{dd.MM.yyyy HH:mm:ss} [%thread] %level %logger{36}%n %msg%n
             </Pattern>
         </layout>
     </appender>
@@ -73,8 +71,7 @@
 
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                %n Date       : %d{dd.MM.yyyy HH:mm:ss}  %n Thread     : %thread %n Log        : %level %logger{36} %n ----------------------------------------------------------------------------%n%msg%n
-                <!--               %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n-->
+                %n %d{dd.MM.yyyy HH:mm:ss} [%thread] %level %logger{36}%n %msg%n
             </Pattern>
         </layout>
     </appender>
@@ -83,7 +80,7 @@
         <file>${FILE_NAME_CONSOLE_APP}</file>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                %n Date       : %d{dd.MM.yyyy HH:mm:ss}  %n Thread     : %thread %n Log        : %level %logger{36} %n ----------------------------------------------------------------------------%n%msg%n
+                %n %d{dd.MM.yyyy HH:mm:ss} [%thread] %level %logger{36}%n %msg%n
            </Pattern>
         </layout>
     </appender>
@@ -91,7 +88,7 @@
     <appender name="CONSOLE_APP" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                %n Date       : %d{dd.MM.yyyy HH:mm:ss}  %n Thread     : %thread %n Log        : %level %logger{36} %n ----------------------------------------------------------------------------%n%msg%n
+                %n %d{dd.MM.yyyy HH:mm:ss} [%thread] %level %logger{36}%n %msg%n
         </Pattern>
         </layout>
     </appender>
