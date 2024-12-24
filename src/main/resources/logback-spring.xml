@@ -71,7 +71,7 @@
 
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                %n %d{dd.MM.yyyy HH:mm:ss} [%thread] %level %logger{36}%n %msg%n
+                %n %d{dd.MM.yyyy HH:mm:ss} [%12.12thread] %highlight(%-5level) %cyan(%-40.40logger{40}) %msg
             </Pattern>
         </layout>
     </appender>
